@@ -6,7 +6,6 @@ const Category = (props) => {
   const stock = props.items.map((item, id) => {
     return <Item name={item.name} prize={item.prize} icon={item.icon} key={id} />;
   });
-
   return (
     <div className={cls["category"]}>
       <h2> {props.name} </h2>
