@@ -2,7 +2,7 @@
 
 # dependencies
 valatron-snack-bar/node_modules
-valatron-snack-bar/src/.next
+valatron-snack-bar/.next
 /.pnp
 .pnp.js
 
