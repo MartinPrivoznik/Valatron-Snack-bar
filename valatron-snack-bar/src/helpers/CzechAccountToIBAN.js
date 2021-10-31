@@ -11,7 +11,6 @@ export default function czechAccountToIBAN(czechAccount) {
   for (let i = 0; i < 100; i++) {
     if (IBAN.isValid("CZ" + padStart(i, 2) + iban)) {
       iban = "CZ" + padStart(i, 2) + iban;
-      console.log(iban);
       return iban;
     }
   }
