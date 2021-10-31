@@ -3,8 +3,8 @@ import cls from "./Category.module.css";
 import Item from "./Item/Item";
 
 const Category = (props) => {
-  const stock = props.items.map((item, id) => {
-    return <Item name={item.name} prize={item.prize} icon={item.icon} key={id} />;
+  const stock = props.items.map((item) => {
+    return <Item name={item.name} prize={item.prize} icon={item.icon} id={item.id} key={item.id} itemHandleClick={props.itemHandleClick} />;
   });
   return (
     <div className={cls["category"]}>

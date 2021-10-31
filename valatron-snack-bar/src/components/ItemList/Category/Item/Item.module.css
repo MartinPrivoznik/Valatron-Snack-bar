@@ -1,6 +1,6 @@
 .item {
     width: 150px;
-    height: 170px;
+    height: 190px;
     border-radius: 10px;
     border: 1.5px solid #BCBCBC;
     display: flex;
@@ -24,4 +24,8 @@
 
 .item .img {
     object-fit: contain
+}
+
+.item .button {
+    height: 20px;
 }
