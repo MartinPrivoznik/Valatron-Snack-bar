@@ -30,8 +30,7 @@ const Cart = (props) => {
   };
 
   const qrCodeClick = () => {
-    setQrPaymentString(getQRPaymentString("2900408123/0800", "Zatim stazista", "Snack bar platba", getTotalPrize()));
-    console.log(getQRPaymentString("2900408123/0800", "Zatim stazista", "Snack bar platba", getTotalPrize()));
+    setQrPaymentString(getQRPaymentString("5469406369/0800", "Ing. Jiří Fůsek", "Platba Snack Bar", getTotalPrize(), 85964327));
     setIsModalOpen(true);
   };
 

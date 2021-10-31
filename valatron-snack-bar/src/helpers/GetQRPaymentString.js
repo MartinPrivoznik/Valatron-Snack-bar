@@ -1,6 +1,6 @@
 import czechAccountToIBAN from "./CzechAccountToIBAN";
 
-export default function getQRPaymentString(bankAccount, recipient, recipientMessage, amount) {
+export default function getQRPaymentString(bankAccount, recipient, recipientMessage, amount, variableSymbol) {
   let qrFormattedData = "SPD*1.0*";
 
   qrFormattedData += "ACC:" + czechAccountToIBAN(bankAccount) + "*";
@@ -8,6 +8,7 @@ export default function getQRPaymentString(bankAccount, recipient, recipientMess
   qrFormattedData += "MSG:" + recipientMessage + "*";
   qrFormattedData += "AM:" + amount + "*";
   qrFormattedData += "CC:CZK*";
+  qrFormattedData += "X-VS:" + variableSymbol + "*";
 
   return qrFormattedData;
 }
