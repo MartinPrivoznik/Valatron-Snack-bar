@@ -5,6 +5,8 @@ import { Button } from "@duik/it";
 import Modal from "react-modal";
 import QRCode from "qrcode.react";
 import getQRPaymentString from "../../helpers/GetQRPaymentString";
+import { HideScroll } from "react-hide-on-scroll";
+import { useMediaQuery } from "react-responsive";
 
 const customStyles = {
   content: {
@@ -71,7 +73,27 @@ const Cart = (props) => {
 
   const totalPrize = getTotalPrize();
 
+  const isMobile = useMediaQuery({query: '(max-width: 790px)'});
+
   return (
+    isMobile 
+    ? 
+    <HideScroll>
+      <div className={cls["cart-container"]}>
+        <h2>Chálkošík</h2>
+        <ContainerVertical className={cls["stock-container"]}>{items}</ContainerVertical>
+        <div className={cls["bottom-container"]}>
+          <h3>Cena: {totalPrize},- Kč</h3>
+          <Button primary className={cls["qr-button"]} onClick={qrCodeClick}>
+            QR kód
+          </Button>
+        </div>
+        <Modal isOpen={isModalOpen} onAfterOpen={onModalOpen} onRequestClose={closeModal} style={customStyles}>
+          <QRCode value={qrPaymentString} size={190} />
+        </Modal>
+      </div>
+    </HideScroll> 
+    :
     <div className={cls["cart-container"]}>
       <h2>Chálkošík</h2>
       <ContainerVertical className={cls["stock-container"]}>{items}</ContainerVertical>
