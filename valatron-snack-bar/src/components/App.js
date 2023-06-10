@@ -10,7 +10,7 @@ const App = () => {
     Stock.map((st, id) => {
       return {
         category: st.category,
-        id: id
+        id: id,
       };
     })
   );
@@ -43,11 +43,17 @@ const App = () => {
     <div className={cls["app"]}>
       <div className={cls["head"]}>
         <div className={cls["logo"]} />
-        <h1>Snack bar</h1>
-        <p>Aneb ukázka Inventi, že sme lepší a nepotřebujem je</p>
+        <h1 data-cms-id="heading">Snack bar</h1>
+        <p data-cms-id="subheading">
+          Aneb ukázka Inventi, že sme lepší a nepotřebujem je
+        </p>
       </div>
       <div className={cls["shop"]}>
-        <ItemList categories={categories} stock={stock} itemHandleClick={itemHandleClick} />
+        <ItemList
+          categories={categories}
+          stock={stock}
+          itemHandleClick={itemHandleClick}
+        />
         <Cart stock={stock} itemHandleClick={itemHandleClick} />
       </div>
     </div>

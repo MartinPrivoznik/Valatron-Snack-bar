@@ -15,8 +15,8 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
+    transform: "translate(-50%, -50%)",
+  },
 };
 
 if (typeof window !== "undefined") {
@@ -32,7 +32,15 @@ const Cart = (props) => {
   };
 
   const qrCodeClick = () => {
-    setQrPaymentString(getQRPaymentString("5469406369/0800", "Ing. Jiří Fůsek", "Platba Snack Bar", getTotalPrize(), 85964327));
+    setQrPaymentString(
+      getQRPaymentString(
+        "5469406369/0800",
+        "Ing. Jiří Fůsek",
+        "Platba Snack Bar",
+        getTotalPrize(),
+        85964327
+      )
+    );
     setIsModalOpen(true);
   };
 
@@ -63,7 +71,10 @@ const Cart = (props) => {
         </p>
         <div className={cls["cart-item-prize"]}>
           <p>{item.count * item.prize},-</p>
-          <Button className={cls["cart-item-button"]} onClick={() => itemHandleClick(item.id)}>
+          <Button
+            className={cls["cart-item-button"]}
+            onClick={() => itemHandleClick(item.id)}
+          >
             -
           </Button>
         </div>
@@ -73,37 +84,54 @@ const Cart = (props) => {
 
   const totalPrize = getTotalPrize();
 
-  const isMobile = useMediaQuery({query: '(max-width: 790px)'});
+  const isMobile = useMediaQuery({ query: "(max-width: 790px)" });
 
-  return (
-    isMobile 
-    ? 
+  return isMobile ? (
     <HideScroll>
       <div className={cls["cart-container"]}>
         <h2>Chálkošík</h2>
-        <ContainerVertical className={cls["stock-container"]}>{items}</ContainerVertical>
+        <ContainerVertical className={cls["stock-container"]}>
+          {items}
+        </ContainerVertical>
         <div className={cls["bottom-container"]}>
           <h3>Cena: {totalPrize},- Kč</h3>
           <Button primary className={cls["qr-button"]} onClick={qrCodeClick}>
             QR kód
           </Button>
         </div>
-        <Modal isOpen={isModalOpen} onAfterOpen={onModalOpen} onRequestClose={closeModal} style={customStyles}>
+        <Modal
+          isOpen={isModalOpen}
+          onAfterOpen={onModalOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+        >
           <QRCode value={qrPaymentString} size={190} />
         </Modal>
       </div>
-    </HideScroll> 
-    :
+    </HideScroll>
+  ) : (
     <div className={cls["cart-container"]}>
-      <h2>Chálkošík</h2>
-      <ContainerVertical className={cls["stock-container"]}>{items}</ContainerVertical>
+      <h2 data-cms-id="basket">Chálkošík</h2>
+      <ContainerVertical className={cls["stock-container"]}>
+        {items}
+      </ContainerVertical>
       <div className={cls["bottom-container"]}>
         <h3>Cena: {totalPrize},- Kč</h3>
-        <Button primary className={cls["qr-button"]} onClick={qrCodeClick}>
+        <Button
+          data-cms-id="qr-code"
+          primary
+          className={cls["qr-button"]}
+          onClick={qrCodeClick}
+        >
           QR kód
         </Button>
       </div>
-      <Modal isOpen={isModalOpen} onAfterOpen={onModalOpen} onRequestClose={closeModal} style={customStyles}>
+      <Modal
+        isOpen={isModalOpen}
+        onAfterOpen={onModalOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
         <QRCode value={qrPaymentString} size={190} />
       </Modal>
     </div>
